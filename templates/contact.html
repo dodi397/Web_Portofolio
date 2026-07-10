@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block title %}Kontak | Portofolio{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+    <div class="container-fluid px-3 px-lg-4">
+        <div class="page-hero-card reveal">
+            <span class="section-kicker">Kontak</span>
+            <h1>Hubungi Saya</h1>
+        </div>
+    </div>
+</section>
+
+<section class="section-block pt-0">
+    <div class="container-fluid px-3 px-lg-4">
+        <div class="row g-4">
+            <div class="col-12 col-lg-5 reveal">
+                <div class="contact-info-card">
+                    <h2>Informasi Kontak</h2>
+                    <div class="contact-item">
+                        <i class="bi bi-envelope"></i>
+                        <div>
+                            <span>Email</span>
+                            <strong>{{ profile.email }}</strong>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="bi bi-github"></i>
+                        <div>
+                            <span>GitHub</span>
+                            <strong>{{ profile.github_link or '-' }}</strong>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="bi bi-linkedin"></i>
+                        <div>
+                            <span>LinkedIn</span>
+                            <strong>{{ profile.linkedin_link or '-' }}</strong>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="bi bi-geo-alt"></i>
+                        <div>
+                            <span>Lokasi</span>
+                            <strong>{{ profile.location or '-' }}</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-7 reveal">
+                <div class="contact-form-card">
+                    <h2>Kirim Pesan</h2>
+                    <form method="POST" class="portfolio-form">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Nama</label>
+                                <input type="text" name="name" class="form-control form-control-dark" placeholder="Nama Anda" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Email</label>
+                                <input type="email" name="email" class="form-control form-control-dark" placeholder="email@contoh.com" required>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Pesan</label>
+                                <textarea name="message" rows="7" class="form-control form-control-dark" placeholder="Tulis pesan Anda..." required></textarea>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <button class="btn btn-neon" type="submit">Kirim Pesan</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
