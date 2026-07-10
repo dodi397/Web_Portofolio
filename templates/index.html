@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% block title %}Beranda | Portofolio{% endblock %}
+
+{% block content %}
+<section class="hero-section">
+    <div class="container-fluid px-3 px-lg-4">
+        <div class="hero-grid">
+            <div class="hero-copy reveal">
+                <div class="eyebrow"><i class="bi bi-stars"></i> Portofolio Dinamis Flask</div>
+                <h1 class="hero-title">Halo, saya <span class="accent">{{ profile.full_name }}</span></h1>
+                <p class="hero-subtitle">{{ profile.headline }}</p>
+                <p class="hero-text">
+                    {{ profile.about }}
+                </p>
+                <div class="hero-actions">
+                    <a href="{{ url_for('portfolio') }}" class="btn btn-neon btn-lg">Lihat Portofolio</a>
+                    <a href="{{ url_for('contact') }}" class="btn btn-ghost btn-lg">Hubungi Saya</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <span class="stat-value">{{ featured_projects|length }}+</span>
+                        <span class="stat-label">Proyek Unggulan</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-value">{{ skills|length }}+</span>
+                        <span class="stat-label">Skill Aktif</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-value">{{ profile.location or 'Indonesia' }}</span>
+                        <span class="stat-label">Domisili</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual reveal">
+                <div class="hero-glow"></div>
+                <div class="profile-orbit">
+                    {% if profile.photo_file %}
+                        <img src="{{ url_for('static', filename='uploads/' ~ profile.photo_file) }}" alt="{{ profile.full_name }}" class="profile-photo" />
+                    {% else %}
+                        <div class="profile-avatar">
+                            {{ profile.full_name[:1]|upper }}
+                        </div>
+                    {% endif %}
+                    <div class="orbit-ring orbit-ring-1"></div>
+                    <div class="orbit-ring orbit-ring-2"></div>
+                    <div class="orbit-ring orbit-ring-3"></div>
+                </div>
+                <div class="floating-tags">
+                    {% for skill in skills[:6] %}
+                    <span class="skill-pill"><i class="bi bi-badge-cc"></i> {{ skill.name }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-block">
+    <div class="container-fluid px-3 px-lg-4">
+        <div class="section-heading reveal">
+            <div>
+                <span class="section-kicker">Highlight</span>
+                <h2>Proyek Terbaru</h2>
+            </div>
+            <a href="{{ url_for('portfolio') }}" class="text-link">Lihat semua <i class="bi bi-arrow-right"></i></a>
+        </div>
+
+        <div class="row g-4">
+            {% for project in featured_projects %}
+            <div class="col-12 col-md-6 col-xl-4 reveal">
+                <article class="project-card h-100">
+                    <div class="project-thumb">
+                        {% if project.image_file %}
+                            <img src="{{ url_for('static', filename='uploads/' ~ project.image_file) }}" alt="{{ project.title }}">
+                        {% else %}
+                            <div class="project-placeholder">
+                                <i class="bi bi-laptop"></i>
+                                <span>No Preview</span>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="project-body">
+                        <div class="project-topline">
+                            <span class="project-badge">Project</span>
+                            <span class="project-date">{{ project.created_at.strftime('%d %b %Y') }}</span>
+                        </div>
+                        <h3>{{ project.title }}</h3>
+                        <p>{{ project.description[:140] }}{% if project.description|length > 140 %}...{% endif %}</p>
+                        <div class="tech-tags">
+                            {% for tech in project.tech_items()[:4] %}
+                            <span>{{ tech }}</span>
+                            {% endfor %}
+                        </div>
+                        <div class="project-actions">
+                            <a href="{{ url_for('project_detail', project_id=project.id) }}" class="btn btn-ghost btn-sm">Detail</a>
+                            {% if project.live_link %}
+                            <a href="{{ project.live_link }}" target="_blank" rel="noopener" class="btn btn-neon btn-sm">Live</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </article>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}
