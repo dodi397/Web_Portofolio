@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block title %}About | Portofolio{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+    <div class="container-fluid px-3 px-lg-4">
+        <div class="page-hero-card reveal">
+            <span class="section-kicker">About</span>
+            <h1>Tentang Saya</h1>
+        </div>
+    </div>
+</section>
+
+<section class="section-block pt-0">
+    <div class="container-fluid px-3 px-lg-4">
+        <div class="row g-4 align-items-stretch">
+            <div class="col-12 col-lg-4 reveal">
+                <div class="profile-card">
+                    <div class="profile-card-media">
+                        {% if profile.photo_file %}
+                            <img src="{{ url_for('static', filename='uploads/' ~ profile.photo_file) }}" alt="{{ profile.full_name }}">
+                        {% else %}
+                            <div class="profile-avatar large">{{ profile.full_name[:1]|upper }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="profile-card-body">
+                        <h3>{{ profile.full_name }}</h3>
+                        <p class="mb-2">{{ profile.headline }}</p>
+                        <ul class="mini-list">
+                            <li><i class="bi bi-envelope"></i> {{ profile.email }}</li>
+                            {% if profile.location %}<li><i class="bi bi-geo-alt"></i> {{ profile.location }}</li>{% endif %}
+                            {% if profile.github_link %}<li><i class="bi bi-github"></i> GitHub tersedia</li>{% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-8 reveal">
+                <div class="content-card">
+                    <div class="content-card-inner">
+                        <h2>Deskripsi Singkat</h2>
+                        <p>{{ profile.about }}</p>
+                    </div>
+
+                    <div class="content-card-inner">
+                        <h2>Pendidikan</h2>
+                        <div class="education-timeline">
+                            {% for education in educations %}
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div>
+                                    <h3>{{ education.title }}</h3>
+                                    <p>{{ education.description }}</p>
+                                </div>
+                            </div>
+                            {% else %}
+                            <div class="empty-state">
+                                <i class="bi bi-journal-text"></i>
+                                <h3>Belum ada pendidikan</h3>
+                                <p class="mb-0">Tambahkan pendidikan dari profil agar tampil di halaman ini.</p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="content-card-inner">
+                        <h2>Skill</h2>
+                        <div class="skill-stack">
+                            {% for skill in skills %}
+                            <div class="skill-row">
+                                <div class="skill-row-head">
+                                    <span>{{ skill.name }}</span>
+                                    <span>{{ skill.level }}%</span>
+                                </div>
+                                <div class="progress skill-progress">
+                                    <div class="progress-bar" style="width: {{ skill.level }}%"></div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
