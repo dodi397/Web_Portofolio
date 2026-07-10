@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block title %}Portofolio | Portofolio{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+    <div class="container-fluid px-3 px-lg-4">
+        <div class="page-hero-card reveal">
+            <span class="section-kicker">Portofolio</span>
+            <h1>Daftar Proyek</h1>
+        </div>
+    </div>
+</section>
+
+<section class="section-block pt-0">
+    <div class="container-fluid px-3 px-lg-4">
+        {% if projects %}
+        <div class="row g-4">
+            {% for project in projects %}
+            <div class="col-12 col-md-6 col-xl-4 reveal">
+                <article class="project-card h-100">
+                    <div class="project-thumb">
+                        {% if project.image_file %}
+                            <img src="{{ url_for('static', filename='uploads/' ~ project.image_file) }}" alt="{{ project.title }}">
+                        {% else %}
+                            <div class="project-placeholder">
+                                <i class="bi bi-brush"></i>
+                                <span>Preview</span>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="project-body">
+                        <div class="project-topline">
+                            <span class="project-badge">Portfolio</span>
+                            <span class="project-date">{{ project.created_at.strftime('%d %b %Y') }}</span>
+                        </div>
+                        <h3>{{ project.title }}</h3>
+                        <p>{{ project.description[:150] }}{% if project.description|length > 150 %}...{% endif %}</p>
+                        <div class="tech-tags">
+                            {% for tech in project.tech_items() %}
+                            <span>{{ tech }}</span>
+                            {% endfor %}
+                        </div>
+                        <div class="project-actions">
+                            <a href="{{ url_for('project_detail', project_id=project.id) }}" class="btn btn-ghost btn-sm">Detail</a>
+                            {% if project.github_link %}
+                            <a href="{{ project.github_link }}" target="_blank" rel="noopener" class="btn btn-neon btn-sm">GitHub</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </article>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="empty-state reveal">
+            <i class="bi bi-inbox"></i>
+            <h3>Belum ada proyek</h3>
+            <p>Tambahkan proyek pertama dari dashboard admin.</p>
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
