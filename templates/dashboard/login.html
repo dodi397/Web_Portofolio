@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}Login Dashboard | Portofolio{% endblock %}
+
+{% block content %}
+<section class="auth-layout">
+    <div class="container-fluid px-3 px-lg-4">
+        <div class="auth-card reveal">
+            <div class="auth-grid">
+                <div class="auth-visual">
+                    <div class="text-center">
+                        <div class="lock mb-4"><i class="bi bi-shield-lock"></i></div>
+                        <h1 class="fw-black mb-3">Dashboard Admin</h1>
+                        <p class="form-note mb-0">Masuk untuk mengelola proyek, profil, dan pesan masuk.</p>
+                    </div>
+                </div>
+                <div class="auth-body">
+                    <span class="section-kicker">Login</span>
+                    <h2 class="mt-3 mb-2">Selamat Datang</h2>
+                    <p class="form-note mb-4">Gunakan akun demo admin untuk mengakses dashboard.</p>
+                    <form method="POST" class="portfolio-form">
+                        <div class="mb-3">
+                            <label class="form-label">Username</label>
+                            <input type="text" name="username" class="form-control form-control-dark" placeholder="Masukkan username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <input type="password" name="password" class="form-control form-control-dark" placeholder="Masukkan password" required>
+                        </div>
+                        <button type="submit" class="btn btn-neon w-100">Masuk</button>
+                    </form>
+                    <div class="mt-4">
+                        <p class="form-note mb-1">Demo account:</p>
+                        <code>admin / admin123</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
