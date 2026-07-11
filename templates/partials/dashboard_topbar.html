@@ -1,0 +1,17 @@
+<header class="dashboard-topbar">
+    <div class="container-fluid px-3 px-lg-4">
+        <div class="d-flex align-items-center justify-content-between py-3 gap-3">
+            <a href="{{ url_for('index') }}" class="brand-link">
+                <img src="{{ url_for('static', filename='images/Logo.png') }}" class="brand-logo" alt="Portofolio.Dev">
+                <span class="brand-text">PORTFOLIO<span class="accent">.dev</span></span>
+            </a>
+            <div class="d-flex align-items-center gap-2">
+                <a href="{{ url_for('index') }}" class="btn btn-ghost btn-sm"><i class="bi bi-arrow-left"></i> Beranda</a>
+                {% if is_admin_logged_in %}
+                <span class="admin-pill"><i class="bi bi-shield-lock"></i> {{ admin_username }}</span>
+                <a href="{{ url_for('dashboard_logout') }}" class="btn btn-neon btn-sm">Logout</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</header>
