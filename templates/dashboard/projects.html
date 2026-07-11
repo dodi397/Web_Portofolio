@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block title %}Manajemen Proyek | Dashboard{% endblock %}
+
+{% block content %}
+<section class="dashboard-content">
+    <div class="container-fluid px-3 px-lg-4">
+        <div class="dashboard-shell">
+            {% include 'partials/dashboard_sidebar.html' %}
+
+            <main class="dashboard-main">
+                <div class="dashboard-hero reveal">
+                    <div>
+                        <span class="section-kicker">Manajemen Proyek</span>
+                        <h1 class="mt-3 mb-1">CRUD Proyek</h1>
+                        <p class="mb-0 text-secondary">Tambah, edit, dan hapus proyek.</p>
+                    </div>
+                    <div class="action-group">
+                        <a href="{{ url_for('dashboard_add_project') }}" class="btn btn-neon"><i class="bi bi-plus-lg"></i> Tambah Proyek</a>
+                    </div>
+                </div>
+
+                <div class="dashboard-panel reveal">
+                    <div class="table-responsive table-responsive-mobile">
+                        <table class="table-dark-custom">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Gambar</th>
+                                    <th>Judul</th>
+                                    <th>Teknologi</th>
+                                    <th>Tanggal</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for project in projects %}
+                                <tr>
+                                    <td>{{ loop.index }}</td>
+                                    <td>
+                                        {% if project.image_file %}
+                                        <img src="{{ url_for('static', filename='uploads/' ~ project.image_file) }}" class="table-avatar" alt="{{ project.title }}">
+                                        {% else %}
+                                        <div class="table-avatar d-grid place-items-center" style="display:grid;place-items:center;background:rgba(255,255,255,.06);color:#ff9dd7;">
+                                            <i class="bi bi-image"></i>
+                                        </div>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <strong>{{ project.title }}</strong>
+                                        <div class="text-secondary small">{{ project.description[:70] }}{% if project.description|length > 70 %}...{% endif %}</div>
+                                    </td>
+                                    <td><span class="badge-soft">{{ project.technologies }}</span></td>
+                                    <td>{{ project.created_at.strftime('%d %b %Y') }}</td>
+                                    <td>
+                                        <div class="action-group">
+                                            <a href="{{ url_for('dashboard_edit_project', project_id=project.id) }}" class="btn btn-ghost btn-sm">Edit</a>
+                                            <form method="POST" action="{{ url_for('dashboard_delete_project', project_id=project.id) }}" data-confirm="Hapus proyek ini?">
+                                                <button type="submit" class="btn btn-neon btn-sm">Hapus</button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</section>
+{% endblock %}
