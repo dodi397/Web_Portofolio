@@ -1,0 +1,19 @@
+<header class="site-nav">
+    <div class="container-fluid px-3 px-lg-4">
+        <div class="nav-inner">
+            <a href="{{ url_for('index') }}" class="brand-link">
+                <img src="{{ url_for('static', filename='images/Logo.png') }}" class="brand-logo" alt="Portofolio.Dev">
+                <span class="brand-text">PORTFOLIO<span class="accent">.dev</span></span>
+            </a>
+            <nav class="nav-links">
+                <a href="{{ url_for('index') }}" class="{% if active_page=='home' %}active{% endif %}">Home</a>
+                <a href="{{ url_for('about') }}" class="{% if active_page=='about' %}active{% endif %}">About</a>
+                <a href="{{ url_for('portfolio') }}" class="{% if active_page=='portfolio' %}active{% endif %}">Portofolio</a>
+                <a href="{{ url_for('contact') }}" class="{% if active_page=='contact' %}active{% endif %}">Kontak</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="{{ url_for('dashboard_login') }}" class="btn btn-neon btn-sm">Dashboard</a>
+            </div>
+        </div>
+    </div>
+</header>
