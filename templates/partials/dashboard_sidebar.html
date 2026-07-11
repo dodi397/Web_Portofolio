@@ -1,0 +1,27 @@
+<aside class="sidebar-panel reveal">
+    <div class="d-flex align-items-center gap-3 mb-3">
+        <div class="brand-mark">
+            {% if profile and profile.photo_file %}
+            <img src="{{ url_for('static', filename='uploads/' ~ profile.photo_file) }}" class="brand-avatar" alt="Profile">
+            {% else %}R{% endif %}
+        </div>
+        <div>
+            <div class="fw-bold">Admin Panel</div>
+            <small class="text-secondary">
+                {% if active_dashboard == 'projects' %}Kelola proyek
+                {% elif active_dashboard == 'profile' %}Profil & pendidikan
+                {% elif active_dashboard == 'messages' %}Kotak masuk
+                {% else %}Ringkasan dashboard{% endif %}
+            </small>
+        </div>
+    </div>
+    <div class="sidebar-menu">
+        <a href="{{ url_for('dashboard_index') }}" class="{% if active_dashboard == 'overview' %}active{% endif %}"><i class="bi bi-speedometer2"></i> Dashboard</a>
+        <a href="{{ url_for('dashboard_projects') }}" class="{% if active_dashboard == 'projects' %}active{% endif %}"><i class="bi bi-kanban"></i> Proyek</a>
+        <a href="{{ url_for('dashboard_profile') }}" class="{% if active_dashboard == 'profile' %}active{% endif %}"><i class="bi bi-person-badge"></i> Profil</a>
+        <a href="{{ url_for('dashboard_messages') }}" class="{% if active_dashboard == 'messages' %}active{% endif %}"><i class="bi bi-inbox"></i> Pesan
+            {% if unread_messages %}<span class="badge text-bg-warning ms-auto">{{ unread_messages }}</span>{% endif %}
+        </a>
+        <a href="{{ url_for('index') }}"><i class="bi bi-house"></i> Lihat Publik</a>
+    </div>
+</aside>
