@@ -1,0 +1,134 @@
+.project-card {
+    overflow: hidden;
+    height: 100%;
+    transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255,62,165,.28);
+    box-shadow: 0 30px 70px rgba(0,0,0,.55);
+}
+
+.project-thumb, .detail-media-card {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16/10;
+    border-bottom: 1px solid rgba(255,255,255,.07);
+    background: linear-gradient(135deg, rgba(255,62,165,.16), rgba(143,91,255,.16));
+}
+
+.project-thumb img, .detail-media-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.project-placeholder, .detail-placeholder, .profile-avatar.large {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    gap: 8px;
+    color: white;
+    background:
+        radial-gradient(circle at top, rgba(255,62,165,.28), transparent 42%),
+        linear-gradient(135deg, rgba(17,14,26,.98), rgba(40,18,43,.98));
+}
+
+.project-placeholder i, .detail-placeholder i {
+    font-size: 2.3rem;
+    color: #ff87cf;
+}
+
+.project-body, .detail-info-card, .contact-info-card, .contact-form-card, .profile-card-body, .content-card, .auth-card, .dashboard-panel, .message-card, .top-card {
+    padding: 22px;
+}
+
+.project-topline, .detail-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    color: var(--muted);
+    font-size: .88rem;
+}
+
+.project-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 11px;
+    border-radius: 999px;
+    font-size: .77rem;
+    font-weight: 800;
+    letter-spacing: .4px;
+    color: #ffe7f3;
+    background: var(--accent-soft);
+    border: 1px solid rgba(255,62,165,.18);
+}
+
+.project-body h3 {
+    margin: 14px 0 8px;
+    font-size: 1.22rem;
+    font-weight: 800;
+}
+
+.project-body p, .content-card p, .detail-info-card p, .contact-info-card p, .page-hero-card p, .profile-card-body p, .auth-card p, .dashboard-panel p, .message-card p {
+    color: var(--muted);
+    line-height: 1.75;
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 16px 0 18px;
+}
+
+.tech-tags span {
+    padding: 8px 12px;
+    border-radius: 999px;
+    font-size: .82rem;
+    font-weight: 700;
+    color: #ffe8f5;
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.08);
+}
+
+.project-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.feature-strip {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    padding: 24px;
+}
+
+.feature-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+}
+
+.feature-item i {
+    font-size: 1.4rem;
+    color: #ff8fd5;
+    margin-top: 3px;
+}
+
+.feature-item h3, .timeline-item h3, .skill-row-head span:first-child {
+    margin: 0 0 6px;
+    font-size: 1.04rem;
+    font-weight: 800;
+}
+
+.feature-item p {
+    margin: 0;
+    color: var(--muted);
+}
+
