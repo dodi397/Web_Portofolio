@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}Tambah Proyek | Dashboard{% endblock %}
+
+{% block content %}
+<section class="dashboard-content">
+    <div class="container-fluid px-3 px-lg-4">
+        <div class="dashboard-shell">
+            {% include 'partials/dashboard_sidebar.html' %}
+
+            <main class="dashboard-main">
+                <div class="dashboard-hero reveal">
+                    <div>
+                        <span class="section-kicker">Tambah Proyek</span>
+                        <h1 class="mt-3 mb-1">Proyek Baru</h1>
+                        <p class="mb-0 text-secondary">Isi form di bawah untuk menambahkan proyek ke portofolio.</p>
+                    </div>
+                </div>
+
+                <div class="dashboard-panel reveal">
+                    <form method="POST" enctype="multipart/form-data" class="portfolio-form">
+                        {% include 'dashboard/_project_form.html' %}
+                        <div class="mt-4 d-flex gap-2 flex-wrap">
+                            <button type="submit" class="btn btn-neon">Simpan Proyek</button>
+                            <a href="{{ url_for('dashboard_projects') }}" class="btn btn-ghost">Batal</a>
+                        </div>
+                    </form>
+                </div>
+            </main>
+        </div>
+    </div>
+</section>
+{% endblock %}
