@@ -1,0 +1,167 @@
+.dashboard-topbar {
+    padding-top: 14px;
+}
+
+.admin-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 14px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.1);
+    color: #ffeaf6;
+    font-weight: 700;
+}
+
+.dashboard-page {
+    padding-bottom: 42px;
+}
+
+.dashboard-shell {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 20px;
+    align-items: start;
+    margin-top: 16px;
+}
+
+.sidebar-panel {
+    position: sticky;
+    top: 22px;
+    background: rgba(12, 10, 18, .78);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 26px;
+    padding: 18px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(18px);
+}
+
+.sidebar-menu {
+    display: grid;
+    gap: 8px;
+    margin-top: 14px;
+}
+
+.sidebar-menu a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    text-decoration: none;
+    border-radius: 16px;
+    color: var(--muted);
+    font-weight: 700;
+    transition: .2s ease;
+}
+
+.sidebar-menu a:hover, .sidebar-menu a.active {
+    background: rgba(255,62,165,.14);
+    color: white;
+}
+
+.dashboard-main {
+    display: grid;
+    gap: 18px;
+}
+
+.dashboard-hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.summary-card {
+    padding: 20px;
+}
+
+.summary-card .icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 16px;
+    display: grid;
+    place-items: center;
+    background: rgba(255,62,165,.14);
+    color: #ff99d2;
+    margin-bottom: 12px;
+    font-size: 1.2rem;
+}
+
+.summary-card .value {
+    font-size: 1.9rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 6px;
+}
+
+.summary-card .label {
+    color: var(--muted);
+    font-weight: 600;
+}
+
+.dashboard-panel {
+    overflow: hidden;
+}
+
+.table-dark-custom {
+    width: 100%;
+    border-collapse: collapse;
+    color: white;
+}
+
+.table-dark-custom th, .table-dark-custom td {
+    padding: 14px 12px;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    vertical-align: middle;
+}
+
+.table-dark-custom th {
+    color: #ffd7ea;
+    font-size: .9rem;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+}
+
+.table-avatar {
+    width: 74px;
+    height: 52px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,.1);
+}
+
+.badge-soft {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 10px;
+    border-radius: 999px;
+    background: rgba(255,62,165,.12);
+    color: #ffd7ea;
+    font-size: .82rem;
+    font-weight: 700;
+}
+
+.badge-soft.read {
+    background: rgba(46, 204, 113, .12);
+    color: #baf3cf;
+}
+
+.badge-soft.unread {
+    background: rgba(255, 193, 7, .12);
+    color: #ffe8a2;
+}
+
+.action-group {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
