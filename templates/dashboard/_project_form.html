@@ -1,0 +1,38 @@
+<div class="row g-3">
+    <div class="col-12">
+        <label class="form-label">Judul Proyek</label>
+        <input type="text" name="title" class="form-control form-control-dark" value="{{ project.title if project else '' }}" placeholder="Masukkan judul proyek" required>
+    </div>
+    <div class="col-12">
+        <label class="form-label">Deskripsi</label>
+        <textarea name="description" rows="6" class="form-control form-control-dark" placeholder="Jelaskan proyek secara detail" required>{{ project.description if project else '' }}</textarea>
+    </div>
+    <div class="col-12">
+        <label class="form-label">Teknologi (pisahkan dengan koma)</label>
+        <input type="text" name="technologies" class="form-control form-control-dark" value="{{ project.technologies if project else '' }}" placeholder="Python, Flask, SQLite" required>
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">GitHub Link</label>
+        <input type="url" name="github_link" class="form-control form-control-dark" value="{{ project.github_link if project else '' }}" placeholder="https://github.com/...">
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Live Link</label>
+        <input type="url" name="live_link" class="form-control form-control-dark" value="{{ project.live_link if project else '' }}" placeholder="https://...">
+    </div>
+    <div class="col-12">
+        <label class="form-label">Gambar Proyek</label>
+        <input type="file" name="image_file" class="form-control form-control-dark" accept=".png,.jpg,.jpeg,.gif,.webp">
+        <div class="form-note mt-2">Format: PNG, JPG, JPEG, GIF, WEBP. Maksimal 5 MB.</div>
+    </div>
+    {% if project and project.image_file %}
+    <div class="col-12">
+        <div class="d-flex align-items-center gap-3 flex-wrap">
+            <img src="{{ url_for('static', filename='uploads/' ~ project.image_file) }}" alt="{{ project.title }}" style="width:120px;height:86px;object-fit:cover;border-radius:16px;border:1px solid rgba(255,255,255,.12)">
+            <label class="d-inline-flex align-items-center gap-2">
+                <input type="checkbox" name="remove_image">
+                <span>Hapus gambar lama</span>
+            </label>
+        </div>
+    </div>
+    {% endif %}
+</div>
