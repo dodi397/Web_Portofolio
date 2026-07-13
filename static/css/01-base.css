@@ -1,0 +1,182 @@
+body {
+    margin: 0;
+    font-family: 'Inter', 'Plus Jakarta Sans', system-ui, sans-serif;
+    background:
+        radial-gradient(circle at top left, rgba(255, 62, 165, 0.16), transparent 28%),
+        radial-gradient(circle at top right, rgba(255, 107, 214, 0.12), transparent 24%),
+        linear-gradient(180deg, var(--bg), var(--bg-2) 55%, #060509 100%);
+    color: var(--text);
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(circle at center, rgba(0,0,0,0.6), transparent 78%);
+    opacity: .14;
+    z-index: 0;
+}
+
+#bgCanvas {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: .7;
+}
+
+.bg-orb {
+    position: fixed;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    filter: blur(70px);
+    opacity: .12;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.bg-orb-a { top: -140px; right: -130px; background: #ff3ea5; }
+.bg-orb-b { bottom: -160px; left: -140px; background: #8f5bff; }
+
+.site-nav, .dashboard-topbar, .site-footer, main, section {
+    position: relative;
+    z-index: 1;
+}
+
+.site-nav {
+    padding: 18px 0 8px;
+}
+
+.reveal {
+    opacity: 1;
+    transform: none;
+    transition: opacity .45s ease, transform .45s ease;
+}
+
+.reveal-visible {
+    opacity: 1;
+    transform: none;
+}
+
+.fw-black {
+    font-weight: 900 !important;
+}
+
+.nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 14px 18px;
+    background: rgba(10, 8, 16, .55);
+    border: 1px solid var(--line);
+    backdrop-filter: blur(18px);
+    border-radius: 999px;
+    box-shadow: var(--shadow);
+}
+
+.brand-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 800;
+    letter-spacing: .4px;
+}
+
+.brand-mark {
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    color: white;
+    background: linear-gradient(135deg, var(--accent), #ff80c8);
+    box-shadow: 0 0 28px rgba(255, 62, 165, .42);
+}
+
+.brand-text { font-size: 1.05rem; }
+.accent { color: var(--accent); }
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    padding: 8px 2px;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    transition: width .25s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--text);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.btn {
+    border-radius: 14px;
+    font-weight: 700;
+    transition: transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
+}
+
+.btn:hover { transform: translateY(-1px); }
+
+.btn-neon {
+    color: white;
+    background: linear-gradient(135deg, var(--accent), #ff6ec9);
+    border: none;
+    box-shadow: 0 12px 30px rgba(255, 62, 165, .26);
+}
+
+.btn-neon:hover {
+    color: white;
+    box-shadow: 0 16px 36px rgba(255, 62, 165, .36);
+}
+
+.btn-ghost, .btn-outline-light {
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.12);
+    color: var(--text);
+}
+
+.btn-ghost:hover, .btn-outline-light:hover {
+    background: rgba(255,255,255,.08);
+    color: white;
+    border-color: rgba(255,255,255,.2);
+}
+
+.btn-sm { padding: .55rem .95rem; }
+.btn-lg { padding: .9rem 1.35rem; }
+
