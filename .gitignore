@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.egg-info/
+build/
+dist/
+.eggs/
+pip-wheel-metadata/
+
+# Virtual environment
+.venv/
+venv/
+env/
+ENV/
+
+# Flask / runtime
+instance/
+*.sqlite3
+*.db
+database.db
+app.db
+
+# Uploads and generated files
+static/uploads/*
+!static/uploads/.gitkeep
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Test / coverage
+.coverage
+.pytest_cache/
+htmlcov/
+
+# Secrets
+.env
+.env.*
